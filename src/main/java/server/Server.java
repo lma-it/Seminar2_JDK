@@ -114,6 +114,5 @@ public class Server implements Repository {
 
     @Override
     public <T extends Connectable> void setConnection(T connectable) {
-
     }
 }

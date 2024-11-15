@@ -13,9 +13,7 @@ import java.util.Random;
 
 public class ClientView extends GUI implements Connectable, MessageController {
     private static final Random RANDOM = new Random();
-    private JTextField ipAddress;
     private static final String IP_ADDRESS = "127.0.1.1";
-    private JTextField port;
     private static final String PORT = "8080";
     private JTextField status;
     private JTextField name;
@@ -61,8 +59,8 @@ public class ClientView extends GUI implements Connectable, MessageController {
     public Component createHeaderOfWindow() {
         GUIBuilder builder = new GUIBuilder();
 
-        ipAddress = new JTextField(IP_ADDRESS);
-        port = new JTextField(PORT);
+        JTextField ipAddress = new JTextField(IP_ADDRESS);
+        JTextField port = new JTextField(PORT);
         status = new JTextField();
         name = new JTextField(client.getName());
         password = new JTextField(client.getPassword());
@@ -103,7 +101,6 @@ public class ClientView extends GUI implements Connectable, MessageController {
 
     private void logIn() {
         if(Server.isActive && !client.isLogin()){
-            // Тестовая строка
             status.setText(setStatus());
             messageHistory.append(server.getMessageHistory());
             client.setIsLogin(true);
@@ -142,7 +139,6 @@ public class ClientView extends GUI implements Connectable, MessageController {
     public void sendMessage(String message) {
         if(Server.isActive && this.client.isLogin()){
             if(!message.isEmpty()){
-                // Тестовые строки
                 messageField.setText("");
                 server.receiveMessageFromClientGUI(client.getName() + ": " + message + "\n");
             }
